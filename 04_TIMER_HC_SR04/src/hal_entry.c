@@ -1,10 +1,10 @@
 #include "hal_data.h"
 #include "drv_hc_sr04.h"
 #include "bsp_uart_debug.h"
+#include "stdio.h"
 
-
+/* External variable for HC-SR04 distance measurement */
 extern float hc_sr04_length;
-
 
 FSP_CPP_HEADER
 void R_BSP_WarmStart(bsp_warm_start_event_t event);
@@ -16,15 +16,20 @@ FSP_CPP_FOOTER
  **********************************************************************************************************************/
 void hal_entry(void)
 {
-    /* TODO: add your own code here */
+    /* Initialize debug UART */
     uart_debug_init();
+    /* Initialize timer with 100MHz frequency */
     user_timer_init(100);
+    /* Initialize HC-SR04 ultrasonic sensor */
     hc_sr04_init();
 
-    while(1)
-    {
+    /* Main loop */
+    while (1) {
+        /* Trigger HC-SR04 measurement */
         hc_sr04_trig();
-        printf("HC_SR04 Length: %f cm\n",hc_sr04_length);
+        /* Print measured distance */
+        printf("HC_SR04 Length: %f cm\n", hc_sr04_length);
+        /* Wait 500ms between measurements */
         R_BSP_SoftwareDelay(500, BSP_DELAY_UNITS_MILLISECONDS);
     }
 

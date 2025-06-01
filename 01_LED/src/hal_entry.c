@@ -10,13 +10,17 @@ FSP_CPP_FOOTER
  **********************************************************************************************************************/
 void hal_entry(void)
 {
-    /* TODO: add your own code here */
+    /* User code start */
+    /* Main loop: LED blinking control */
     while(1)
     {
-        g_ioport.p_api->pinWrite(g_ioport.p_ctrl,BSP_IO_PORT_01_PIN_14,!R_BSP_PinRead(BSP_IO_PORT_01_PIN_14));
+        /* Read current LED pin state and toggle it to create blinking effect */
+        g_ioport.p_api->pinWrite(g_ioport.p_ctrl, BSP_IO_PORT_01_PIN_14, !R_BSP_PinRead(BSP_IO_PORT_01_PIN_14));
+        
+        /* Delay for 1000 milliseconds (1 second) */
         R_BSP_SoftwareDelay(1000, BSP_DELAY_UNITS_MILLISECONDS);
     }
-
+    /* User code end */
 
 #if BSP_TZ_SECURE_BUILD
     /* Enter non-secure code */

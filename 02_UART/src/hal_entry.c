@@ -13,11 +13,10 @@ void hal_entry(void)
 {
     /* TODO: add your own code here */
     uart_debug_init();
-    uint8_t pf_buf[]={"Hello Renesas!"};
+
     while(1)
     {
         printf("Hello Renesas! \n");
-        //R_SCI_UART_Write(&g_uart6_debug_ctrl, pf_buf, sizeof(pf_buf));
         R_BSP_SoftwareDelay(1000, BSP_DELAY_UNITS_MILLISECONDS);
     }
 
