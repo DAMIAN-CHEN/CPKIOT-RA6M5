@@ -19,3 +19,38 @@
 &emsp;&emsp;[CPKIOT-RA6Mx开发手册.pdf](/figures/CPKIOT-RA6Mx.pdf)
 
 &emsp;&emsp;[CPKIoT_RA6Mx_RevA03_Schematic.pdf](/figures/CPKIoT_RA6Mx_RevA03_Schematic.pdf)
+
+## Example Description
+
+### 01_LED
+&emsp;&emsp;基础的点灯操作，灯为开发板上的user_led。
+
+### 02_UART
+&emsp;&emsp;开启串口uart6并实现串口串口重定向功能。串口为开发板上的引脚P304和P305。如果需要在PC端使用串口调试，需要自己接一个USB转TTL模块。
+
+### 03_SPI_WS2812 
+
+&emsp;&emsp;使用SPI数据流点亮WS2812小灯条并实现颜色亮度自定义。开启的SPI为P101和P100
+
+&emsp;&emsp;<img src="figures/ws2812.jpeg"  style="zoom:35%;" />
+
+### 04_TIMER_HC_SR04
+
+&emsp;&emsp;这是一个综合使用的例程。使用GPT定时器并重写一个用户定时器程序模块，并采用外部中断+双边沿检测实现测距。相较常规定时捕获功能牺牲一点测量精度提高引脚使用的灵活性。
+
+&emsp;&emsp;<img src="figures/hc_sr04.jpeg"  style="zoom:80%;" />
+
+### 05_GPT_PWM
+
+&emsp;&emsp;使用GPT定时器PWM输出功能实现LED灯的呼吸效果。
+
+### 06_RTC
+&emsp;&emsp;芯片自带的时钟功能及其配置。
+
+&emsp;&emsp;<img src="figures/rtc.png"  style="zoom:80%;" />
+
+### 07_ADC
+
+&emsp;&emsp;开发板上的AN005连接了一个可变电阻，可作为一个ADC电压测量的例程。
+
+&emsp;&emsp;<img src="figures/adc.png"  style="zoom:80%;" />
